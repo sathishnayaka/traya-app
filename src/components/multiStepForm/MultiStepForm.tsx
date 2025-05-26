@@ -29,7 +29,6 @@ const MultiStepInner = () => {
       nextStep();
     } else {
       alert('Form submitted successfully!');
-      console.log(data);
     }
   };
 

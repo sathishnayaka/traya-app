@@ -54,7 +54,7 @@ const initialPanels: Panel[] = [
     title: 'Key Metrics',
     contentType: 'KeyMetrics',
     colStart: 1,
-    colEnd: 3,
+    colEnd: 2,
     rowStart: 1,
     rowEnd: 2,
     collapsed: false,
@@ -91,7 +91,7 @@ const initialPanels: Panel[] = [
   },
 ];
 
-// Map content types to actual components
+
 const PanelContentComponents: { [key: string]: React.FC } = {
   KeyMetrics: KeyMetricsContent,
   SalesChart: SalesChartContent,

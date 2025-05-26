@@ -1,12 +1,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(150px, auto);
   gap: 15px;
   padding: 20px;
@@ -15,8 +16,8 @@ body {
 }
 
 .dashboard-panel {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -24,6 +25,7 @@ body {
   overflow: hidden;
   position: relative;
   transition: all 0.3s ease-in-out;
+  color: var(--color-text);
 }
 
 .panel-header {
@@ -31,41 +33,43 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--color-header-bg);
+  border-bottom: 1px solid var(--color-border);
   font-weight: bold;
   cursor: grab;
+  color: var(--color-text);
 }
 
 .panel-header button {
-  background: none;
-  border: 1px solid #ccc;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 5px 10px;
   cursor: pointer;
   font-size: 0.85em;
-  color: #333;
-  transition: background-color 0.2s ease;
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .panel-header button:hover {
-  background-color: #e9e9e9;
+  background-color: var(--color-primary-light);
+  color: var(--color-on-primary);
 }
 
 .panel-content {
-  flex-grow: 1; 
+  flex-grow: 1;
   padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  color: var(--color-text);
 }
 
-
 .dashboard-panel.collapsed {
-  min-height: 50px; 
+  min-height: 50px;
   align-items: center;
-  background-color: #e0f7fa;
-  border-color: #00bcd4;
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
   padding: 10px;
   height: 30px;
 }
@@ -73,8 +77,9 @@ body {
 .dashboard-panel.collapsed .panel-header {
   border-bottom: none;
   width: 100%;
+  background-color: transparent;
+  color: var(--color-on-primary);
 }
-
 
 .resize-handle {
   position: absolute;
@@ -83,14 +88,13 @@ body {
   width: 10px;
   height: 100%;
   cursor: ew-resize;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   z-index: 1;
 }
 
 .resize-handle:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.05); /* can be themed if needed */
 }
-
 
 .panel-content ul {
   margin: 0;
@@ -100,7 +104,7 @@ body {
 
 .panel-content li {
   padding: 5px 0;
-  border-bottom: 1px dotted #eee;
+  border-bottom: 1px dotted var(--color-border);
 }
 
 .panel-content li:last-child {

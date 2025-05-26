@@ -9,7 +9,8 @@
   position: fixed;
   top: 40%;
   left: 40%;
-  background: white;
+  background-color: var(--color-surface);
+  color: var(--color-text);
   border-radius: 8px;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -17,7 +18,7 @@
   flex-direction: column;
   z-index: 1001;
   outline: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .modal-header {
@@ -25,8 +26,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--color-primary);
+  color: var(--color-nav-text);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 26px;
 }
 
@@ -39,6 +41,7 @@
 .modal-close {
   background: none;
   border: none;
+  color: var(--color-nav-text);
   font-size: 1.5rem;
   cursor: pointer;
   line-height: 1;
@@ -66,6 +69,16 @@
   padding: 10px;
   font-size: 16px;
   font-weight: 600;
+  background-color: var(--color-primary);
+  color: var(--color-nav-text);
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.open-modal-button:hover {
+  background-color: var(--color-nav-hover);
 }
 
 .modal-page-container {

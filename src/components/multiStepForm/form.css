@@ -2,7 +2,8 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  background: #fff;
+  background: var(--color-surface);
+  color: var(--color-text);
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -24,7 +25,9 @@
 
 .form-input {
   padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-text);
+  background-color: var(--color-background);
+  color: var(--color-text);
   border-radius: 8px;
   font-size: 1rem;
   width: 90%;
@@ -32,8 +35,8 @@
 }
 
 .form-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 30%, transparent);
   outline: none;
 }
 
@@ -53,16 +56,15 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: #3b82f6;
+  background: var(--color-primary);
   transition: width 0.4s ease;
   text-align: end;
   color: white;
   font-size: 20px;
   font-weight: 700;
   border-radius: 12px;
+  color: var(--color-text);
 }
-
-
 
 .form-navigation {
   display: flex;
@@ -77,23 +79,24 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .btn-primary {
-  background: #3b82f6;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-nav-text);
 }
 
 .btn-primary:hover {
-  background: #2563eb;
+  background: color-mix(in srgb, var(--color-primary) 80%, black);
 }
 
 .btn-secondary {
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
 }
 
 .btn-secondary:hover {
-  background: #e5e7eb;
+  background: color-mix(in srgb, var(--color-surface) 90%, black);
 }
