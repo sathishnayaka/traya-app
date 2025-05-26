@@ -8,7 +8,7 @@ import React, {
 import { Column, Filter } from "./types";
 import { useVirtualScroll } from "../../hooks/useVirtualScroll";
 import { exportToCSV } from "../../utils/csvExport";
-
+import './style.css';
 interface DataGridProps<T extends object> {
   columns: Column<T>[];
   data: T[];
@@ -71,9 +71,9 @@ export function DataGrid<T extends object>({
   const spacerHeightBottom = (filteredData.length - endIndex - 1) * rowHeight;
 
   return (
-    <div style={{ fontFamily: "sans-serif", overflow: "hidden", border: "1px solid #ccc" }}>
-      <div style={{ padding: 8 }}>
-        <button onClick={onExportCSV}>Export CSV</button>
+    <div style={{ fontFamily: "sans-serif", overflow: "hidden", border: "1px solid #ccc" }} className="datagrid-container">
+      <div style={{ padding: 8 }} className="datagrid-header">
+        <button onClick={onExportCSV} className="btn-export">Export CSV</button>
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12, padding: 8 }}>
@@ -83,12 +83,13 @@ export function DataGrid<T extends object>({
             const existing = filters.find((f) => f.key === col.key);
             return (
               <div key={String(col.key)}>
-                <label style={{ display: "block", fontSize: 12 }}>{col.title}</label>
+                <label style={{ display: "block", fontSize: 14 }}>{col.title}</label>
                 <input
                   style={{
                     padding: "4px 8px",
                     width: 120,
                     fontSize: 14,
+                    borderRadius:'12px',
                   }}
                   value={existing?.value || ""}
                   onChange={(e) => {
@@ -107,7 +108,6 @@ export function DataGrid<T extends object>({
       </div>
 
       <div style={{ display: "flex", height, borderTop: "1px solid #ccc" }} ref={containerRef}>
-        {/* Frozen table */}
         <div style={{ overflow: "hidden", flex: "0 0 auto" }}>
           <table
             style={{
