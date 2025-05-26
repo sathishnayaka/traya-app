@@ -49,8 +49,10 @@ const MultiStepInner = () => {
   );
 };
 
-export const MultiStepForm = () => (
+const MultiStepForm = () => (
   <FormStepProvider>
     <MultiStepInner />
   </FormStepProvider>
 );
+
+export default MultiStepForm;

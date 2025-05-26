@@ -1,13 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import DataGridPage from "./pages/DataGrid";
-import ModalStack from "./pages/ModalStack";
-import { MultiStepForm } from "./components/multiStepForm/MultiStepForm";
-import TreeHierarchucalTreePage from "./pages/TreeHierarchucalTreePage";
+const DataGridPage = lazy(() => import("./pages/DataGrid"));
+const ModalStack = lazy(() => import("./pages/ModalStack"));
+const MultiStepForm = lazy(() => import("./components/multiStepForm/MultiStepForm"));
+const TreeHierarchucalTreePage = lazy(() => import("./pages/TreeHierarchucalTreePage"));
+const DashboardLayout = lazy(() => import("./components/DashboardLayout/DashboardLayout"));
 import './components/DashboardLayout/DashboardLayout.css';
 import './App.css';
 import { ThemeSwitcher } from "./components/theme/ThemeSwitcher";
-import { DashboardLayout } from "./components/DashboardLayout/DashboardLayout";
 function App() {
   return (
     <Router>
@@ -27,14 +27,16 @@ function App() {
           </header>
 
           <main className="main-content">
-            <Routes>
-              <Route path="/data-grid" element={<DataGridPage />} />
-              <Route path="/modal-stack" element={<ModalStack />} />
-              <Route path="/multi-step-form" element={<MultiStepForm />} />
-              <Route path="/tree" element={<TreeHierarchucalTreePage />} />
-              <Route path="/dashboard"element={<DashboardLayout />} />
-              <Route path="*" element={<div>Select a page from the sidebar.</div>} />
-            </Routes>
+            <Suspense fallback={<div className="loader">Loading...</div>}>
+              <Routes>
+                <Route path="/data-grid" element={<DataGridPage />} />
+                <Route path="/modal-stack" element={<ModalStack />} />
+                <Route path="/multi-step-form" element={<MultiStepForm />} />
+                <Route path="/tree" element={<TreeHierarchucalTreePage />} />
+                <Route path="/dashboard" element={<DashboardLayout />} />
+                <Route path="*" element={<div>Select a page from the sidebar.</div>} />
+              </Routes>
+            </Suspense>
           </main>
         </div>
       </div>

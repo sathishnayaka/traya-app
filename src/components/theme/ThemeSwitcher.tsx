@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "./themeContext";
+import { useTheme } from "./ThemeContext";
 const themes = ['light', 'dark', 'custom-red'];
 
 export const ThemeSwitcher = () => {
