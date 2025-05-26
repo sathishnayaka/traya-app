@@ -7,6 +7,7 @@ import TreeHierarchucalTreePage from "./pages/TreeHierarchucalTreePage";
 import './components/DashboardLayout/DashboardLayout.css';
 import './App.css';
 import { ThemeSwitcher } from "./components/theme/ThemeSwitcher";
+import { DashboardLayout } from "./components/DashboardLayout/DashboardLayout";
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
           <NavLink to="/modal-stack" className="nav-item">Modal Stack</NavLink>
           <NavLink to="/multi-step-form" className="nav-item">Multi Step Form</NavLink>
           <NavLink to="/tree" className="nav-item">Hierarchical Tree</NavLink>
+          <NavLink to="/dashboard"  className="nav-item">Dashboard Layout</NavLink>
         </nav>
 
         <div className="main-area">
@@ -30,6 +32,7 @@ function App() {
               <Route path="/modal-stack" element={<ModalStack />} />
               <Route path="/multi-step-form" element={<MultiStepForm />} />
               <Route path="/tree" element={<TreeHierarchucalTreePage />} />
+              <Route path="/dashboard"element={<DashboardLayout />} />
               <Route path="*" element={<div>Select a page from the sidebar.</div>} />
             </Routes>
           </main>
