@@ -4,3 +4,130 @@ body {
   margin: 0;
   padding: 1rem;
 }
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tree-container {
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tree-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.tree-item {
+  margin: 4px 0;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.tree-item .tree-node {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.tree-item .tree-node:hover {
+  background-color: #f0f0f0;
+}
+
+.label {
+  margin-left: 0.5rem;
+}
+
+.caret {
+  transition: transform 0.2s ease-in-out;
+}
+
+.tree-caret.expanded {
+  transform: rotate(90deg);
+}
+
+.tree-item.dragging {
+  opacity: 0.5;
+}
+
+.tree-item.drag-over .tree-node {
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.tree-node {
+  font-size: 24px;
+}
+
+.tree-container {
+  padding: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tree-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.tree-item {
+  margin: 4px 0;
+  cursor: grab;
+  transition: background-color 0.2s;
+}
+
+.tree-item .tree-node {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.tree-item .tree-node:hover {
+  background-color: #eef;
+}
+
+.tree-item.drag-over .tree-node {
+  border: 2px dashed #007bff;
+  background-color: #e6f0ff;
+}
+
+.tree-item.dragging .tree-node {
+  opacity: 0.5;
+}
+
+.tree-caret {
+  display: inline-block;
+  width: 12px;
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+
+.tree-caret.expanded {
+  transform: rotate(90deg);
+}
+
+.tree-label {
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}

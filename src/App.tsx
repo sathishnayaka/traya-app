@@ -1,36 +1,41 @@
 import React from "react";
-import { DataGrid } from "./components/DataGrid/DataGrid";
-import { Column } from "./components/DataGrid/types";
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  age: number;
-}
-
-// Generate 1000 mock rows
-const data: User[] = Array.from({ length: 1000 }, (_, i) => ({
-  id: i + 1,
-  name: `User ${i + 1}`,
-  email: `user${i + 1}@example.com`,
-  age: 20 + (i % 50),
-}));
-
-// Define columns
-const columns: Column<User>[] = [
-  { key: "id", title: "ID", width: 80, frozen: true },
-  { key: "name", title: "Name", filterable: true, width: 150 },
-  { key: "email", title: "Email", filterable: true, width: 250 },
-  { key: "age", title: "Age", width: 100 },
-];
-
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import DataGridPage from "./pages/DataGrid";
+import ModalStack from "./pages/ModalStack";
+import { MultiStepForm } from "./components/multiStepForm/MultiStepForm";
+import TreeHierarchucalTreePage from "./pages/TreeHierarchucalTreePage";
+import './components/DashboardLayout/DashboardLayout.css';
+import './App.css';
+import { ThemeSwitcher } from "./components/theme/ThemeSwitcher";
 function App() {
   return (
-    <div style={{ padding: 16 }}>
-      <h2>Virtualized DataGrid with 1000 Rows</h2>
-      <DataGrid<User> columns={columns} data={data} rowHeight={35} height={500} />
-    </div>
+    <Router>
+      <div className="app-container">
+        <nav className="sidebar">
+          <NavLink to="/data-grid" className="nav-item">Data Grid</NavLink>
+          <NavLink to="/modal-stack" className="nav-item">Modal Stack</NavLink>
+          <NavLink to="/multi-step-form" className="nav-item">Multi Step Form</NavLink>
+          <NavLink to="/tree" className="nav-item">Hierarchical Tree</NavLink>
+        </nav>
+
+        <div className="main-area">
+          <header className="app-header">
+            <h1 className="app-title">My Component Playground</h1>
+            <ThemeSwitcher />
+          </header>
+
+          <main className="main-content">
+            <Routes>
+              <Route path="/data-grid" element={<DataGridPage />} />
+              <Route path="/modal-stack" element={<ModalStack />} />
+              <Route path="/multi-step-form" element={<MultiStepForm />} />
+              <Route path="/tree" element={<TreeHierarchucalTreePage />} />
+              <Route path="*" element={<div>Select a page from the sidebar.</div>} />
+            </Routes>
+          </main>
+        </div>
+      </div>
+    </Router>
   );
 }
 
