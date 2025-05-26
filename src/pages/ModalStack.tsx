@@ -8,20 +8,65 @@ const ModalStack: React.FC = () => {
   const openFirstModal = () => {
     openModal({
       id: "first",
-      title: "First Modal",
+      title: "User Profile",
       children: (
         <div>
-          <h4>This is the first modal</h4>
+          <h4>This is the first modal (User Profile)</h4>
+          <p>Name: John Doe</p>
+          <p>Email: john.doe@example.com</p>
           <button
+            className="open-modal-button"
             onClick={() =>
               openModal({
                 id: "second",
-                title: "Second Modal",
-                children: <p>This is the second stacked modal</p>,
+                title: "Edit Preferences",
+                children: (
+                  <div>
+                    <h4>Second Modal - Edit Preferences</h4>
+                    <p>Theme: Dark Mode</p>
+                    <p>Notifications: Enabled</p>
+                    <button
+                      className="open-modal-button"
+                      onClick={() =>
+                        openModal({
+                          id: "third",
+                          title: "Security Settings",
+                          children: (
+                            <div>
+                              <h4>Third Modal - Security Settings</h4>
+                              <p>2FA: Enabled</p>
+                              <p>Password Last Changed: 2 months ago</p>
+                              <button
+                                className="open-modal-button"
+                                onClick={() =>
+                                  openModal({
+                                    id: "fourth",
+                                    title: "Confirm Changes",
+                                    children: (
+                                      <div>
+                                        <h4>Final Modal - Confirm Changes</h4>
+                                        <p>Please confirm your updated settings before saving.</p>
+                                        <button className="open-modal-button">Confirm</button>
+                                      </div>
+                                    ),
+                                  })
+                                }
+                              >
+                                Proceed to Confirmation
+                              </button>
+                            </div>
+                          ),
+                        })
+                      }
+                    >
+                      Go to Security Settings
+                    </button>
+                  </div>
+                ),
               })
             }
           >
-            Open Another Modal
+            Edit Preferences
           </button>
         </div>
       ),
@@ -30,18 +75,15 @@ const ModalStack: React.FC = () => {
 
   return (
     <div className="modal-page-container">
-        <div>
-         <h1>Stacked model component</h1>
-        </div>
-    <div>
-        <button
-        onClick={openFirstModal}
-        className="open-modal-button"
-      >
-        Open Modal
-      </button>
-      {renderedModals}
-    </div>
+      <div>
+        <h1>Stacked Modal Component</h1>
+      </div>
+      <div>
+        <button onClick={openFirstModal} className="open-modal-button">
+          Open Modal
+        </button>
+        {renderedModals}
+      </div>
     </div>
   );
 };
